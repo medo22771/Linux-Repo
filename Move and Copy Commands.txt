@@ -1,0 +1,11 @@
+--------------
+To Move A File From one Place to Another
+
+->mv "Source Path/file.txt" "Name Of The File To be Saved In Current Dir"
+
+--------------
+To Copy a File From one Place To Another
+
+->cp -i "Source Path\file.txt" "Destination Path"
+
+--------------
