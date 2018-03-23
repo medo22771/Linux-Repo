@@ -1,0 +1,3 @@
+-To Check And Add Enviroment Variables
+1-sudo -H gedit /etc/environment
+2-VARNAME="path to the executable (.exe)"
