@@ -1,0 +1,57 @@
+### Introduction
+
+Basic network configuration and hostname on a Ubuntu system are stored in several files which must be edited to create a working configuration:
+
+1-) /etc/network/interfaces describes the network interfaces
+2-) /etc/hostname configures the nameserver credentials
+3-) /etc/hosts resolves IP addresses to hostnames
+
+----------------------------------------------------------------------------------------------------------------------------
+### Changing Network Configuration
+
+-- example of a static IP configuration
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface (Change eth0 to the socket name of the internet connection cable)
+auto eth0
+iface eth0 inet static
+    address 10.0.0.41
+    netmask 255.255.255.0
+    network 10.0.0.0
+    broadcast 10.0.0.255
+    gateway 10.0.0.1
+    dns-nameservers 10.0.0.1 8.8.8.8
+    dns-domain acme.com
+    dns-search acme.com
+
+Open your /etc/network/interfaces file, locate the:
+
+1-) "iface eth0..." line and change dynamic to static
+2-) address line and change the address to the static IP address
+3-) netmask line and change the address to the correct subnet mask
+4-) gateway line and change the address to the correct gateway address
+5-) dns-nameservers line and change (or add) the nameserver information
+6-) Restart network re-connect using the new IP address :
+	ifdown eth0; ifup eth0
+
+----------------------------------------------------------------------------------------------------------------------------
+### Changing the Hostname
+
+-- To change the hostname to your preferred node name (example: prodnode01), you have to edit the /etc/hostname file
+
+----------------------------------------------------------------------------------------------------------------------------
+### Adding the FQDN (Hostname)
+
+-- To ensure your server traffic will be routing correctly add the server's Fully Qualified Domain Name (FQDN) and IP address to the hosts file. Open the /etc/hosts file and add a line with the static IP address and the FQDN, similar to the example shown below:
+
+192.168.0.0 prodnode01.acme.com
+
+----------------------------------------------------------------------------------------------------------------------------
+### Reboot the Machine
+
+1-) sudo reboot
