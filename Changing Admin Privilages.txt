@@ -1,0 +1,9 @@
+1-) login as root
+2-) run the following commands:
+	1-) gitlab-rails console production				// wait for gitlab-rails console to run might take up to 10 mins
+	2-) u = User.where(id:1).first					//result must be the user id and name
+	3-) u.password = 'Gohary2013#'
+	4-) u.passwprd_confiramation = 'Gohary2013#'
+	5-) u.save!										// result must be true
+	6-) exit
+	7-) now login from gitlab URL on any PC with Username = root and password =  Gohary2013#
